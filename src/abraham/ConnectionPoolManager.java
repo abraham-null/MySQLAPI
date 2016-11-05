@@ -31,11 +31,11 @@ public class ConnectionPoolManager {
     }
  
     private void init() {
-        hostname = "158.69.63.67";
-        port = "3306";
-        database = "demodb";
-        username = "lasthero";
-        password = "newt6345";
+        hostname = plugin.getConfig().getString("hostname");
+        port = plugin.getConfig().getString("port");
+        database = plugin.getConfig().getString("database");
+        username = plugin.getConfig().getString("username");
+        password = plugin.getConfig().getString("password");
         
         minimumConnections = 3;
         maximumConnections = 5;

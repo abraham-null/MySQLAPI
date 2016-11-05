@@ -1,5 +1,6 @@
 package abraham;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -9,15 +10,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class MySQLAPI extends JavaPlugin{
 	
     private final Logger logger = getLogger();
-    private SQLManager sql;
+    public SQLManager sql;
+    public ConnectionPoolManager pool = null;
 
 	@Override
 	public void onDisable() {
-		sql.onDisable();
+		pool.closePool();
 	}
 
 	@Override
 	public void onEnable() {
+		createConfig();
+		
+		pool = new ConnectionPoolManager(this);
+		
 		Bukkit.getLogger().info("              ");
 		Bukkit.getLogger().info("              ");
 		Bukkit.getLogger().info("initDatabase");
@@ -41,6 +47,25 @@ public class MySQLAPI extends JavaPlugin{
     
     public SQLManager getSQLManager() {
         return sql;
+    }
+    
+    private void createConfig() {
+        try {
+            if (!getDataFolder().exists()) {
+                getDataFolder().mkdirs();
+            }
+            File file = new File(getDataFolder(), "config.yml");
+            if (!file.exists()) {
+                getLogger().info("Config.yml not found, creating!");
+                saveDefaultConfig();
+            } else {
+                getLogger().info("Config.yml found, loading!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
     }
 
 }
