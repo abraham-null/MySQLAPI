@@ -1,0 +1,7 @@
+name: MySQLAPI
+version: 1.0
+description: MySQLAPI
+author: abraham-null
+authors: [abraham-null] 
+website: http://ackeron.com
+main: abraham.MySQLAPI

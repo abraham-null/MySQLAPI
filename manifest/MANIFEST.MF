@@ -1,0 +1,1 @@
+Class-Path: MySQLAPI/c3p0-0.9.5.1.jar <plugin>/mchange-commons-java-0.2.10.jar <plugin>/mysql-connector-java-5.1.37-bin.jar
