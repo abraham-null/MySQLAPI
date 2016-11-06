@@ -38,7 +38,6 @@ public class MySQLAPI extends JavaPlugin{
 		Bukkit.getLogger().info("              ");
 		Bukkit.getLogger().info("              ");
 		
-		Bukkit.getServer().getPluginManager().registerEvents(new testClass(this), this);
 	}
 	
     private void initDatabase() {
